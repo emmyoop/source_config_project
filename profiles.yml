@@ -1,0 +1,25 @@
+test_source_changes:
+  outputs:
+    dev:
+      dbname: dbt
+      host: localhost
+      pass: password
+      port: 5432
+      schema: dbt_source_testing
+      threads: 4
+      type: postgres
+      user: root
+  target: dev
+
+generate_sources:
+  outputs:
+    dev:
+      dbname: dbt
+      host: localhost
+      pass: password
+      port: 5432
+      schema: dbt_sources
+      threads: 4
+      type: postgres
+      user: root
+  target: dev
