@@ -1,0 +1,94 @@
+version: 2
+sources:
+  - name: my_source
+    schema: invalid_schema
+    database: invalid_database
+    freshness:
+      error_after: {count: 3, period: hour}
+    tables:
+      - name: my_table
+        identifier: my_package_seed
+        columns:
+          - name: id
+            tests:
+              - unique
+              - not_null
+          - name: color
+            tests:
+              - unique
+              - not_null
+      - name: my_other_table
+        identifier: my_other_package_seed
+        columns:
+          - name: id
+            tests:
+              - unique
+              - not_null
+          - name: letter
+            tests:
+              - unique
+              - not_null
+      - name: snapshot_freshness
+        identifier: snapshot_freshness_base
+        loaded_at_field: updated_at
+        freshness:
+          error_after: {count: 1, period: hour}
+  - name: my_other_source
+    schema: "{{ target.schema }}"
+    database: "{{ target.database }}"
+    freshness:
+      error_after: {count: 1, period: day}
+    tables:
+      - name: never_fresh
+        loaded_at_field: updated_at
+
+
+# same as above with all properties defined as configs instead
+# sources:
+#   - name: my_source
+#     config:
+#       schema: invalid_schema
+#       database: invalid_database
+#       freshness:
+#         error_after: {count: 3, period: hour}
+#     tables:
+#       - name: my_table
+#         config:
+#           identifier: my_package_seed
+#         columns:
+#           - name: id
+#             tests:
+#               - unique
+#               - not_null
+#           - name: color
+#             tests:
+#               - unique
+#               - not_null
+#       - name: my_other_table
+#         config:
+#           identifier: my_other_package_seed
+#         columns:
+#           - name: id
+#             tests:
+#               - unique
+#               - not_null
+#           - name: letter
+#             tests:
+#               - unique
+#               - not_null
+#       - name: snapshot_freshness
+#         config:
+#           identifier: snapshot_freshness_base
+#           loaded_at_field: updated_at
+#           freshness:
+#             error_after: {count: 1, period: hour}
+#   - name: my_other_source
+#     config:
+#       schema: "{{ target.schema }}"
+#       database: "{{ target.database }}"
+#       freshness:
+#         error_after: {count: 1, period: day}
+#     tables:
+#       - name: never_fresh
+#         config:
+#           loaded_at_field: updated_at
