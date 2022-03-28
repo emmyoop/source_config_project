@@ -8,7 +8,7 @@ sources:
       error_after: {count: 3, period: day}
     tables:
       - name: my_table
-        identifier: my_real_seed
+        identifier: my_package_seed
         # on the override, the "color" column is only unique, it can be null!
         columns:
           - name: id
@@ -19,11 +19,7 @@ sources:
             tests:
               - unique
       - name: my_other_table
-        identifier: my_real_other_seed
-      - name: snapshot_freshness
-        identifier: snapshot_freshness_base
-        freshness:
-          error_after: {count: 1, period: day}
+        identifier: my_package_other_seed
 
 # same as above with all properties defined as configs instead
 # sources:
@@ -37,7 +33,7 @@ sources:
 #     tables:
 #       - name: my_table
 #         config:
-#           identifier: my_real_seed
+#           identifier: my_package_seed
 #         # on the override, the "color" column is only unique, it can be null!
 #         columns:
 #           - name: id
@@ -49,9 +45,4 @@ sources:
 #               - unique
 #       - name: my_other_table
 #         config:
-#           identifier: my_real_other_seed
-#       - name: snapshot_freshness
-#         config:
-#           identifier: snapshot_freshness_base
-#           freshness:
-#             error_after: {count: 1, period: day}
+#           identifier: my_package_other_seed

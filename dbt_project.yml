@@ -1,6 +1,5 @@
 config-version: 2
 
-
 name: source_config_project
 profile: source_config_project
 
@@ -16,31 +15,23 @@ clean-targets:
 seeds:
   localdep:
     enabled: true
-    keep:
-      enabled: true
   quote_columns: false
 sources:
-  localdep:
-    my_other_source:
-      enabled: true
-
-# list of eventually available source config options
-# enabled: True,
-# quoting:
-#     database: False
-#     schema: False
-#     identifier: False
-#     column: False
-# freshness:
-#     error_after: {count: 24, period: hour}
-#     warn_after: {count: 12, period: hour}
-# loader: "a_loader"
-# loaded_at_field: some_column
-# database: custom_database
-# schema: custom_schema
-# # identifier: "seed"  #this doesnt seems to be supported now?
-# meta: {'languages': ['python']}
-# tags: ["important_tag"]
+  enabled: true
+  # quoting:
+  #   database: False
+  #   schema: False
+  #   identifier: False
+  #   column: False
+  # freshness:
+  #   error_after: {count: 10, period: hour}
+  #   warn_after: {count: 20, period: hour}
+  # loader: "project_loader"
+  # loaded_at_field: project_column
+  # database: project_database  # note: this won't work unless it's real
+  # schema: project_schema
+  # meta: {'source': ['project']}
+  # tags: ["project_tag"]
 
 
 require-dbt-version: [">=1.0.0", "<2.0.0"]

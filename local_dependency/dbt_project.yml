@@ -5,7 +5,23 @@ version: '1.0'
 
 profile: 'default'
 
-seeds:
-  quote_columns: False
-
 seed-paths: ['seeds']
+model-paths: ['models']
+
+sources:
+  localdep:
+    enabled: True
+    # quoting:
+    #   database: False
+    #   schema: False
+    #   identifier: False
+    #   column: False
+    # freshness:
+    #   error_after: {count: 1, period: hour}
+    #   warn_after: {count: 2, period: hour}
+    # loader: "localdep_loader"
+    # loaded_at_field: localdep_column
+    # database: localdep_database  # note: this won't work unless it's real
+    # schema: localdep_schema
+    # meta: {'source': ['localdep']}
+    # tags: ["localdep_tag"]
